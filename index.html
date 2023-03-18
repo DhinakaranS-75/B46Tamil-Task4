@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK 4 </title>
+
+  
+
+</head>
+<body>
+    
+    <h1>TASK 4  Q & A</h1>
+(1)Question
+    How to compare two JSON have the same properties without order?
+
+Answer
+    <script>
+        var user ={name:"Person 1", age :5};
+        var user1 = {age:5 , name:"Pesron 1"};
+
+        function isEqual(user, user1) {
+            var userKeys = Object.keys(user);
+            var user1keys = Object.keys(user1);
+       
+
+            if (userKeys.length != user1keys.length) {
+                return false;
+            }
+
+            for (var userKeys of userKeys) {
+                if (user[userKeys] != user[userKeys]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        console.log(isEqual(user, user1));
+
+    </script>
+
+(2).Question
+  Use the rest countries API:https://restcountries.com/v3.1/all Url and display all the country flag in the console
+Answer:
+
+    <script>
+
+        fetch('https://restcountries.com/v3.1/all')
+            .then(Response => Response.json())
+            .then(countries =>{
+                countries.forEach(country => {
+                    console.log(country.flags.svg);
+                });
+            })
+
+
+    </script>
+
+(3).Question
+
+    Use the same rest countries and print all countries names, sub-regions, sub-region and populations
+Answer:
+
+    <script>
+        fetch('https://restcountries.com/v3.1/all')
+            .then(Response => Response.json())
+            .then(countries =>{
+                countries.forEach(country =>{
+                    console.log(`name: ${country.name.common}| Region: ${country.region} | 
+                    sub-region: ${country.sunregion} | population: ${country.population}`);
+                });
+                
+            })
+    </script>
+
+    
+    
+</body>
+</html>
